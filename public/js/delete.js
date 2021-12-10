@@ -1,0 +1,2 @@
+$((function(){$(".delete").click((function(){Swal.fire({title:"Czy na pewno chcesz usunąć rekord?",icon:"warning",showCancelButton:!0,confirmButtonText:"Tak",cancelButtonText:"Anuluj"}).then((function(n){n.value&&$.ajax({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")},method:"POST",url:deleteUrl,data:{name:"John",location:"Boston"}}).done((function(n){console.log("response status: ",n.status),window.location.reload()})).fail((function(n){Swal.fire("Oops...",n.responseJSON.message,"error")}))}))}))}));
+//# sourceMappingURL=delete.js.map

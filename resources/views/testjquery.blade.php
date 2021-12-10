@@ -11,36 +11,8 @@
 @endsection
 
 @section('javascript')
-$(function() {
-$('.delete').click(function() {
-Swal.fire({
-title: 'Czy na pewno chcesz usunąć rekord?',
-icon: 'warning',
-showCancelButton: true,
-confirmButtonText: 'Tak',
-cancelButtonText: 'Anuluj'
-}).then((result) => {
-if(result.value) {
-$.ajax({
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-},
-method: "POST",
-url: "http://clinicvet.test/testajax",
-data: {
-name: "John",
-location: "Boston"
-}
-})
-.done(function(response){
-console.log('response status: ', response.status);
-window.location.reload();
-})
-.fail(function(error){
-Swal.fire('Oops...', 'Coś poszło nie tak!','error');
-});
-}
-});
-});
-});
+const deleteUrl = "{{ url('testajax') }}";
+@endsection
+@section('js-files')
+<script src="{{ asset('js/delete.js') }}"></script>
 @endsection
