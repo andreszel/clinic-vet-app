@@ -53,4 +53,11 @@ class HomeController extends Controller
         // You can change the orientation and paper size, and hide or show errors (by default, errors are shown when debug is on)
         //return PDF::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('test2.pdf');
     }
+
+    public function testAjax()
+    {
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }

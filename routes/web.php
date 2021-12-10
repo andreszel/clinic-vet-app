@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/test-jquery', [HomeController::class, 'testjquery']);
+Route::get('/test-jquery', [HomeController::class, 'testJquery']);
 Route::get('/test-pdf', [HomeController::class, 'createPDF']);
+Route::post('/testajax', [HomeController::class, 'testAjax']);
