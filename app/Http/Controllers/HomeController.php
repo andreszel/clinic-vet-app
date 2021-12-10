@@ -28,6 +28,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function testJquery()
+    {
+        return view('testjquery');
+    }
+
     public function createPDF()
     {
         $html = '<h1>Test</h1><p>Enim et nulla laboris voluptate qui Lorem anim ipsum. Mollit deserunt aute mollit velit nisi excepteur eiusmod consectetur. Excepteur nostrud reprehenderit amet occaecat eu deserunt deserunt ea velit fugiat velit.</p>';
