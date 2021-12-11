@@ -20,8 +20,8 @@ $(function() {
                     }
                 })
                 .done(function(data){
-                    console.log('response status: ', data.status);
-                    window.location.reload();
+                    $('#validation-message').append('<div class="alert dark alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button><b>' + data.message + '</b></div>');
+                    setTimeout(function () { window.location.reload(true); }, 2500);
                 })
                 .fail(function(data){
                     Swal.fire('Oops...', data.responseJSON.message, 'error');

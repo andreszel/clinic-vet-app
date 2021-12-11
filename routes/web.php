@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/test-jquery', [HomeController::class, 'testJquery']);
-Route::get('/test-pdf', [HomeController::class, 'createPDF']);
-Route::post('/testajax', [HomeController::class, 'testAjax'])->name('test.ajax');
+// Panel administracyjny
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+    Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+    Route::get('/test-jquery', [AdminHomeController::class, 'testJquery']);
+    Route::get('/test-pdf', [AdminHomeController::class, 'createPDF']);
+    Route::post('/testajax', [AdminHomeController::class, 'testAjax'])->name('test.ajax');
+});
+
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => true, // Password Reset Routes...
+    'verify' => true, // Email Verification Routes...
+]);
